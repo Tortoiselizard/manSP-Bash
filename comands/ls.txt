@@ -1,0 +1,250 @@
+LS(1) Comandos de usuario LS(1)
+
+NOMBRE
+ ls - lista de contenidos del directorio
+
+SINOPSIS
+ ls [OPCIÓN]... [ARCHIVO]...
+
+DESCRIPCIÓN
+ Muestra información sobre los ARCHIVOS (el directorio actual por defecto).
+ Ordene las entradas alfabéticamente si ninguno de -cftuvSUX ni --sort es
+ especificado.
+
+ Los argumentos obligatorios para las opciones largas son obligatorios para las opciones cortas
+ también.
+
+ -a, --todos
+  no ignore las entradas que comiencen con .
+
+ -A, --casi-todo
+  no enumere implícito. y ..
+
+ --autor
+  con -l, imprime el autor de cada archivo
+
+ -b, --escape
+  imprimir escapes de estilo C para caracteres no gráficos
+
+ --block-size=TAMAÑO
+  con -l, escalar tamaños por TAMAÑO al imprimirlos; p.ej.,
+  '--tamaño-bloque=M'; vea el formato de TAMAÑO a continuación
+
+ -B, --ignorar-copias de seguridad
+  no incluya entradas implícitas que terminen en ~
+
+ -c con -lt: ordena y muestra ctime (hora del último cambio de archivo
+  información de estado); con -l: mostrar ctime y ordenar por nombre;
+  de lo contrario: ordenar por ctime, más reciente primero
+
+ -C lista de entradas por columnas
+
+ --color[=CUANDO]
+  colorea la salida CUANDO; más información a continuación
+
+ -d, --directorio
+  enumerar los directorios en sí mismos, no sus contenidos
+
+ -D, --dired
+  generar salida diseñada para el modo dirigido de Emacs
+
+ -f enumera todas las entradas en orden de directorio
+
+ -F, --clasificar[=CUANDO]
+  agregar indicador (uno de */=>@|) a las entradas CUANDO
+
+ --Tipo de archivo
+  del mismo modo, excepto que no agregue '*'
+
+ --formato=PALABRA
+  horizontal -x, comas -m, horizontal -x, largo -l, columna única -1,
+  detallado -l, vertical -C
+
+ --tiempo completo
+  como -l --time-style=full-iso
+
+ -g como -l, pero no muestra el propietario
+
+ --grupo-directorios-primero
+  agrupar directorios antes que archivos; se puede aumentar con --sort
+  opción, pero cualquier uso de --sort=none (-U) deshabilita la agrupación
+
+ -G, --no-grupo
+  en una lista larga, no imprima los nombres de los grupos
+
+ -h, --legible por humanos
+  con -l y -s, tamaños de impresión como 1K 234M 2G, etc.
+
+ --si igualmente, pero usa potencias de 1000 no 1024
+
+ -H, --dereference-command-line
+  siga los enlaces simbólicos enumerados en la línea de comando
+
+ --dereference-command-line-symlink-to-dir
+  siga cada enlace simbólico de línea de comando que apunta a un
+  directorio
+
+ --hide=PATRÓN
+  no enumere las entradas implícitas que coincidan con el PATRÓN de shell (reemplazado
+  por -a o -A)
+
+ --hipervínculo[=CUANDO]
+  nombres de archivos de hipervínculos CUANDO
+
+ --indicator-style=PALABRA
+  agregar indicador con estilo WORD a los nombres de las entradas: ninguno (predeterminado),
+  barra inclinada (-p), tipo de archivo (--tipo de archivo), clasificar (-F)
+
+ -i, --inodo
+  imprimir el número de índice de cada archivo
+
+ -I, --ignorar=PATRÓN
+  no enumere las entradas implícitas que coincidan con el PATRÓN de shell
+
+ -k, --kibibytes
+  el valor predeterminado es bloques de 1024 bytes para el uso del sistema de archivos; usado solo
+  con -s y por directorio totales
+
+ -Utilizo un formato de listado largo
+
+ -L, --desreferencia
+  al mostrar información de archivo para un enlace simbólico, mostrar
+  información para el archivo al que hace referencia el enlace en lugar de para el
+  enlace en sí
+
+ -m ancho de relleno con una lista de entradas separadas por comas
+
+ -n, --numeric-uid-gid
+  como -l, pero enumera los ID numéricos de usuarios y grupos
+
+ -N, --literal
+  imprimir nombres de entradas sin comillas
+
+ -o como -l, pero no enumera la información del grupo
+
+ -p, --indicator-style=barra
+  agregar/indicar a los directorios
+
+ -q, --ocultar-control-caracteres
+  imprimir ? en lugar de caracteres no gráficos
+
+ --mostrar-control-caracteres
+  mostrar caracteres no gráficos tal cual (el valor predeterminado, a menos que el programa esté
+  'ls' y la salida es una terminal)
+
+ -Q, --nombre de comillas
+  encierre los nombres de las entradas entre comillas dobles
+
+ --quoting-style=PALABRA
+  use el estilo de comillas WORD para los nombres de las entradas: literal, locale, shell,
+  shell-siempre, shell-escape, shell-escape-siempre, c, escapar
+  (anula la variable de entorno QUOTING_STYLE)
+
+ -r, --reverse
+  orden inverso al ordenar
+
+ -R, --recursivo
+  enumerar subdirectorios recursivamente
+
+ -s, --tamaño
+  imprimir el tamaño asignado de cada archivo, en bloques
+
+ -S ordenar por tamaño de archivo, primero el más grande
+
+ --ordenar=PALABRA
+  ordenar por PALABRA en lugar de nombre: ninguno (-U), tamaño (-S), tiempo (-t),
+  versión (-v), extensión (-X), ancho
+
+ --tiempo=PALABRA
+  seleccione qué marca de tiempo usar para mostrar u ordenar; tiempo de acceso
+  (-u): hora, acceso, uso; tiempo de cambio de metadatos (-c): ctime,
+  estado; hora modificada (predeterminada): mtime, modificación; nacimiento
+  tiempo: nacimiento, creación;
+
+  con -l, WORD determina qué hora mostrar; con --sort=tiempo,
+  ordenar por PALABRA (más reciente primero)
+
+ --tiempo-estilo=TIEMPO_ESTILO
+  formato de hora/fecha con -l; ver TIME_STYLE a continuación
+
+ -t ordenar por tiempo, el más nuevo primero; ver --tiempo
+
+ -T, --tabsize=COLES
+  suponga que la tabulación se detiene en cada COLS en lugar de 8
+
+ -u con -lt: ordena y muestra el tiempo de acceso; con -l: mostrar acceso
+  tiempo y ordenar por nombre; de lo contrario: ordenar por tiempo de acceso, más reciente
+  primero
+
+ -U no ordenar; enumerar las entradas en el orden del directorio
+
+ -v tipo natural de números (versión) dentro del texto
+
+ -w, --width=COLES
+  establezca el ancho de salida en COLS. 0 significa sin límite
+
+ -x enumera las entradas por líneas en lugar de por columnas
+
+ -X ordenar alfabéticamente por extensión de entrada
+
+ -Z, --contexto
+  imprimir cualquier contexto de seguridad de cada archivo
+
+ --zero finaliza cada línea de salida con NUL, no con nueva línea
+
+ -1 lista un archivo por línea
+
+ --help muestra esta ayuda y sale
+
+ --versión
+  información de la versión de salida y salir
+
+ El argumento TAMAÑO es un número entero y una unidad opcional (ejemplo: 10K es
+ 10*1024). Las unidades son K,M,G,T,P,E,Z,Y,R,Q (potencias de 1024) o KB,MB,...
+ (potencias de 1000). También se pueden usar prefijos binarios: KiB=K, MiB=M y
+ pronto.
+
+ El argumento TIME_STYLE puede ser full-iso, long-iso, iso, locale o
+ +FORMATO. FORMAT se interpreta como en date(1). Si FORMATO es
+ FORMATO1<nueva línea>FORMATO2, luego FORMATO1 se aplica a archivos no recientes y
+ FORMAT2 a archivos recientes. TIME_STYLE con el prefijo 'posix-' tomas
+ sólo tiene efecto fuera de la configuración regional POSIX. También el entorno TIME_STYLE
+ variable establece el estilo predeterminado que se utilizará.
+
+ El argumento CUANDO por defecto es 'siempre' y también puede ser 'automático' o
+ 'nunca'.
+
+ El uso de colores para distinguir tipos de archivos está deshabilitado de forma predeterminada y
+ con --color=nunca. Con --color=auto, ls emite códigos de color solo cuando
+ la salida estándar está conectada a un terminal. El entorno LS_COLORS
+ variable puede cambiar la configuración. Utilice el comando dircolors(1) para establecer
+ él.
+
+ Estado de salida:
+ 0 si está bien,
+
+ 1 si hay problemas menores (por ejemplo, no se puede acceder al subdirectorio),
+
+ 2 si hay problemas graves (p. ej., no se puede acceder al argumento de la línea de comandos).
+
+AUTOR
+ Escrito por Richard M. Stallman y David MacKenzie.
+
+REPORTE DE ERRORES
+ Ayuda en línea de GNU coreutils: <https://www.gnu.org/software/coreutils/>
+ Informe cualquier error de traducción a <https://translationproject.org/team/>
+
+DERECHOS DE AUTOR
+ Copyright (C) 2023 Free Software Foundation, Inc. Licencia GPLv3+: GNU
+ GPL versión 3 o posterior <https://gnu.org/licenses/gpl.html>.
+ Este es software libre: eres libre de cambiarlo y redistribuirlo.
+ NO HAY GARANTÍA, en la medida permitida por la ley.
+
+VER TAMBIÉN
+ colores(1)
+
+ Documentación completa <https://www.gnu.org/software/coreutils/ls>
+ o disponible localmente a través de: info '(coreutils) ls invocación'
+
+GNU coreutils 9.3 Abril 2023 LS(1)
+

@@ -1,0 +1,103 @@
+RM(1) Comandos de usuario RM(1)
+
+NOMBRE
+ rm - eliminar archivos o directorios
+
+SINOPSIS
+ rm [OPCIÓN]... [ARCHIVO]...
+
+DESCRIPCIÓN
+ Esta página de manual documenta la versión GNU de rm. rm elimina cada
+ archivo especificado. Por defecto, no elimina directorios.
+
+ Si se da la opción -I o --interactive=once, y hay más
+ de tres archivos o se dan -r, -R o --recursive, entonces rm
+ pregunta al usuario si desea continuar con toda la operación. Si
+ la respuesta no es afirmativa, se aborta todo el comando.
+
+ De lo contrario, si un archivo no se puede escribir, la entrada estándar es una terminal, y
+ no se da la opción -f o --force, o -i o
+ --interactive=siempre se da la opción, rm pregunta al usuario si
+ para eliminar el archivo. Si la respuesta no es afirmativa, el expediente es
+ saltado
+
+OPCIONES
+ Eliminar (desvincular) los ARCHIVOS.
+
+ -f, --fuerza
+  ignorar archivos y argumentos inexistentes, nunca preguntar
+
+ -Aviso antes de cada eliminación
+
+ -Pregunto una vez antes de eliminar más de tres archivos, o cuando
+  eliminando recursivamente; menos intrusivo que -i, sin dejar de dar
+  protección contra la mayoría de los errores
+
+ --interactivo[=CUANDO]
+  pregunta según CUÁNDO: nunca, una vez (-I), o siempre (-i);
+  sin CUANDO, preguntar siempre
+
+ --un-sistema-de-archivo
+  al eliminar una jerarquía recursivamente, omita cualquier directorio que
+  está en un sistema de archivos diferente al del correspondiente
+  argumento de línea de comando
+
+ --no-preservar-raíz
+  no trate '/' especialmente
+
+ --preservar-raíz[=todos]
+  no elimine '/' (predeterminado); con 'all', rechaza cualquier línea de comando
+  argumento en un dispositivo separado de su padre
+
+ -r, -R, --recursivo
+  eliminar directorios y sus contenidos recursivamente
+
+ -d, --dir
+  eliminar directorios vacios
+
+ -v, --verbose
+  explicar lo que se está haciendo
+
+ --help muestra esta ayuda y sale
+
+ --versión
+  información de la versión de salida y salir
+
+ De forma predeterminada, rm no elimina directorios. Use el --recursive (-r o
+ -R) para eliminar también cada directorio de la lista, junto con todos sus
+ contenido.
+
+ Para eliminar un archivo cuyo nombre comienza con '-', por ejemplo, '-foo', use
+ uno de estos comandos:
+
+  rm--foo
+
+  rm ./-foo
+
+ Tenga en cuenta que si usa rm para eliminar un archivo, podría ser posible
+ recuperar parte de su contenido, con suficiente experiencia y/o tiempo.
+ Para mayor seguridad de que los contenidos son verdaderamente irrecuperables,
+ considere usar shred(1).
+
+AUTOR
+ Escrito por Paul Rubin, David MacKenzie, Richard M. Stallman y Jim
+ Meyering.
+
+REPORTE DE ERRORES
+ Ayuda en línea de GNU coreutils: <https://www.gnu.org/software/coreutils/>
+ Informe cualquier error de traducción a <https://translationproject.org/team/>
+
+DERECHOS DE AUTOR
+ Copyright (C) 2023 Free Software Foundation, Inc. Licencia GPLv3+: GNU
+ GPL versión 3 o posterior <https://gnu.org/licenses/gpl.html>.
+ Este es software libre: eres libre de cambiarlo y redistribuirlo.
+ NO HAY GARANTÍA, en la medida permitida por la ley.
+
+VER TAMBIÉN
+ desvincular(1), desvincular(2), chattr(1), triturar(1)
+
+ Documentación completa <https://www.gnu.org/software/coreutils/rm>
+ o disponible localmente a través de: info '(coreutils) rm invocación'
+
+GNU coreutils 9.3 Abril 2023 RM(1)
+

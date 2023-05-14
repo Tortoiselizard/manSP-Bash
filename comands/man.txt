@@ -1,0 +1,190 @@
+MAN(1) Manual de Comandos Generales MAN(1)
+
+NOMBRE
+ man - mostrar páginas de manual
+
+SINOPSIS
+ man [-acfhklw] [-C archivo] [-M ruta] [-m ruta] [-S subsección]
+  [[-s] sección] nombre...
+
+DESCRIPCIÓN
+ La utilidad man muestra la página del manual titulada nombre. Las páginas pueden ser
+ seleccionado de acuerdo con una categoría específica (sección) o máquina
+ arquitectura (subsección).
+
+ Las opciones son las siguientes:
+
+ -a Mostrar todas las páginas de manual coincidentes.
+
+ -C archivo
+  Utilice el archivo especificado en lugar del archivo de configuración predeterminado.
+  Esto permite a los usuarios configurar su propio entorno manual.
+  Consulte man.conf(5) para obtener una descripción del contenido de este archivo.
+
+ -c Copia la página del manual a la salida estándar en lugar de usar
+  less(1) para paginarlo. Esto se hace por defecto si el estándar
+  la salida no es un dispositivo terminal.
+
+  Cuando se usa -c, la mayoría de los dispositivos terminales no pueden mostrar el
+  margen. Para imprimir la salida de man a la terminal con marcado
+  pero sin usar un buscapersonas, canalícelo a ul(1). para quitar el
+  marcado, canalice la salida a col(1) -b en su lugar.
+
+ -f Un sinónimo de whatis(1). Busca el nombre en la página del manual.
+  nombres y muestra las líneas de encabezado de todas las páginas coincidentes. El
+  la búsqueda no distingue entre mayúsculas y minúsculas y solo coincide con palabras completas.
+
+ -h Muestra solo las líneas SINOPSIS de las páginas de manual solicitadas.
+  Implica -a y -c.
+
+ -k Sinónimo de apropos(1). En lugar de nombre, una expresión puede ser
+  proporcionado utilizando la sintaxis descrita en el manual apropos(1). Por
+  por defecto, muestra las líneas de encabezado de todas las páginas coincidentes.
+
+ -l Sinónimo de mandoc(1). Los argumentos de nombre se interpretan como
+  nombres de archivo No se realiza ninguna búsqueda y archivo, ruta, sección,
+  subsección y -w se ignoran. Esta opción implica -a.
+
+ -M camino
+  Anule la lista de directorios para buscar páginas de manual. El
+  la ruta suministrada debe ser una lista separada por dos puntos (`:') de
+  directorios. Esta opción también anula la variable de entorno.
+  MANPATH y cualquier directorio especificado en el archivo man.conf(5).
+
+ -m camino
+  Aumente la lista de directorios para buscar páginas de manual. El
+  la ruta suministrada debe ser una lista separada por dos puntos (`:') de
+  directorios. Estos directorios se buscarán antes que los
+  especificado usando la opción -M, la variable de entorno MANPATH,
+  el archivo man.conf(5) o los directorios predeterminados.
+
+ -S subsección
+  Mostrar solo páginas para la arquitectura de la máquina especificada (1).
+  la subsección no distingue entre mayúsculas y minúsculas.
+
+  Por defecto, se instalan páginas de manual para todas las arquitecturas.
+  Por lo tanto, esta opción se puede utilizar para ver las páginas de una
+  arquitectura mientras usa otra.
+
+  Esta opción anula la variable de entorno MACHINE.
+
+ [-s] sección
+  Solo seleccione manuales de la sección especificada. el actualmente
+  las secciones disponibles son:
+
+   1 Comandos generales (herramientas y utilidades).
+   2 Llamadas al sistema y números de error.
+   3 Funciones de biblioteca.
+   3p perl(1) guía de referencia del programador.
+   4 Controladores de dispositivos.
+   5 Formatos de archivo.
+   6 Juegos.
+   7 Información miscelánea.
+   8 Comandos de operación y mantenimiento del sistema.
+   9 elementos internos del núcleo.
+
+ -w Muestra los nombres de ruta de todas las páginas de manual coincidentes en lugar de
+  mostrando alguno de ellos. Si no se da ningún nombre, enumere los
+  directorios que se buscarían.
+
+ Las opciones -IKOTW también son compatibles y están documentadas en mandoc(1).
+ Las opciones -fkl son mutuamente excluyentes y se anulan entre sí.
+
+ La búsqueda comienza con el argumento -m si se proporciona, luego continúa con
+ el argumento -M, la variable MANPATH, las entradas manpath en el
+ man.conf(5), o con /data/data/com.termux/files/usr/share/man por
+ por defecto. Dentro de cada uno de estos, los directorios se buscan en el orden
+ proporcionó. Dentro de cada directorio, la búsqueda procede según el
+ siguiente lista de secciones: 1, 8, 6, 2, 3, 5, 7, 4, 9, 3p. La primera
+ se muestra la coincidencia encontrada.
+
+ La base de datos mandoc.db(5) se utiliza para buscar entradas de páginas manuales. En
+ casos en los que la base de datos está ausente, desactualizada o corrupta, el hombre recurre
+ a buscar archivos llamados nombre.sección. Si tanto un formato como un
+ versión sin formato de la misma página del manual, por ejemplo cat1/foo.0 y
+ man1/foo.1, existen en el mismo directorio, solo la versión sin formato es
+ usado. La base de datos se mantiene actualizada con makewhatis(8), que se ejecuta
+ por el script de mantenimiento semanal(8).
+
+ Las pautas para escribir páginas man se pueden encontrar en mdoc(7).
+
+AMBIENTE
+ MÁQUINA Dado que algunas páginas del manual están destinadas únicamente a
+  arquitecturas, man busca en cualquier subdirectorio, con el mismo
+  nombre como la arquitectura actual, en cada directorio que
+  búsquedas. Las áreas específicas de la máquina se verifican antes que las generales.
+  áreas El tipo de máquina actual se puede anular configurando
+  la variable de entorno MACHINE al nombre de un determinado
+  arquitectura, o con la opción -S. MÁQUINA es caso
+  insensible.
+
+ MANPAGER Cualquier valor no vacío de la variable de entorno MANPAGER es
+  usado en lugar del programa de paginación estándar, less(1). Si
+  se usa less(1), el comando interactivo :t se puede usar para ir
+  a las definiciones de varios términos, por ejemplo, línea de comando
+  opciones, modificadores de comandos, comandos internos, entorno
+  variables, nombres de funciones, macros de preprocesador, errno(2)
+  valores, y algunas otras palabras enfatizadas. Algunos términos pueden tener
+  definir texto en más de un lugar. En ese caso, el
+  Los comandos interactivos t y T de less(1) se pueden usar para pasar al
+  siguiente y al lugar anterior brindando información sobre el
+  último término buscado con :t. La opción -O etiqueta[=término]
+  documentado en el manual de mandoc(1) abre una página de manual en el
+  definición de un término específico y no al principio.
+
+ MANPATH Anula la ruta de búsqueda estándar que se especifica en
+  man.conf(5) o la ruta predeterminada. El formato de MANPATH es un
+  dos puntos (`:') lista separada de directorios. Directorios inválidos
+  son ignorados. Anulado por -M, ignorado si se especifica -l.
+
+  Si MANPATH comienza con dos puntos, se agrega al estándar
+  camino; si termina con dos puntos, se antepone al estándar
+  camino; o si contiene dos dos puntos adyacentes, la ruta estándar
+  se inserta entre los dos puntos.
+
+ PAGER Especifica el programa de paginación a usar cuando MANPAGER no está
+  definido. Si no se define PAGER ni MANPAGER, menos(1) es
+  usado.
+
+ARCHIVOS
+ /data/data/com.termux/files/usr/etc/man.conf configuración predeterminada de man
+       archivo
+
+ESTADO DE SALIDA
+ La utilidad man sale de 0 en caso de éxito y de >0 si se produce un error. Ver
+ mandoc(1) para más detalles.
+
+EJEMPLOS
+ Dé formato a una página para pegar extractos en un mensaje de correo electrónico; evite
+ imprimiendo cualquier carácter UTF-8, reduzca el ancho para facilitar las comillas en
+ responde y elimina el marcado:
+
+  $ man -T ascii -O ancho=65 prenda | columna -b
+
+ Leer una página compuesta en un visor de PDF:
+
+  $ MANPAGER=mupdf man -T pdf lpd
+
+VER TAMBIÉN
+ apropos(1), col(1), mandoc(1), ul(1), whereis(1), man.conf(5), mdoc(7)
+
+ESTÁNDARES
+ La utilidad man cumple con IEEE Std 1003.1-2008 ("POSIX.1")
+ especificación.
+
+ Las banderas [-aCcfhIKlMmOSsTWw], así como las variables de entorno
+ MACHINE, MANPAGER y MANPATH son extensiones de esa especificación.
+
+HISTORIA
+ Un comando man apareció por primera vez en la versión 2 de AT&T UNIX.
+
+ La opción -w apareció por primera vez en la versión 7 AT&T UNIX; -f y -k en 4BSD;
+ -M en 4.3BSD; -a en 4.3BSD-Tahoe; -c y -m en 4.3BSD-Reno; -h en
+ 4.3BSD-Red/2; -C en NetBSD 1.0; -s y -S en OpenBSD 2.3; y -I, -K, -l,
+ -O y -W en OpenBSD 5.7. La opción -T apareció por primera vez en AT&T
+ System III UNIX y también se agregó en OpenBSD 5.7.
+
+Linux 4.19.95-perf-g2a358cd
+    $Mdocdate: 20 de julio de 2020 $
+       Linux 4.19.95-perf-g2a358cd
+
