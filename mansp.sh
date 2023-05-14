@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#ruta directorio de comandos
+pathComands="/data/data/com.termux/files/home/scripts/mansp/comands"
+
+#Buscar en biblioteca
+if test -e "$pathComands/$1.txt"; then
+less "$pathComands/$1.txt"
+else
+
 #Crear archivo comand.txt con informacion del manual
 man $1 | col -b | tr -s ' ' | sed 's/\"/\\\"/g' > /data/data/com.termux/files/home/scripts/mansp/comand.txt
 sed -i 's/	/ /g' /data/data/com.termux/files/home/scripts/mansp/comand.txt
@@ -33,10 +41,12 @@ echo '  ]' >> /data/data/com.termux/files/home/scripts/mansp/comand.json
 echo '}' >> /data/data/com.termux/files/home/scripts/mansp/comand.json
 
 #Hacer solicitud
-curl -X POST -H "Content-Type: application/json" -d @/data/data/com.termux/files/home/scripts/mansp/comand.json https://mansp-back.onrender.com/linux/man > /data/data/com.termux/files/home/scripts/mansp/comando.txt
+curl -X POST -H "Content-Type: application/json" -d @/data/data/com.termux/files/home/scripts/mansp/comand.json https://mansp-back.onrender.com/linux/man > "$pathComands/$1.txt"
 
 #Leer informacion
-less /data/data/com.termux/files/home/scripts/mansp/comando.txt
+less "$pathComands/$1.txt"
+
+fi
 
 #solicitud GET
 #respuesta=$(curl -s https://mansp-back.onrender.com/linux)
